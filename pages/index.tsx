@@ -1,8 +1,9 @@
 import Link from 'next/link'
-import Layout from '../components/Layout'
+import Nav from '../components/Nav'
 
 const IndexPage = () => (
 <>
+<Nav></Nav>
 <h1>index</h1>
 </>
 )
