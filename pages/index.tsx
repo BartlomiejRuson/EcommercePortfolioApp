@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import Nav from '../components/Nav'
-
+import Slider from '../components/Slider'
 const IndexPage = () => (
 <>
 <Nav></Nav>
-<h1>index</h1>
+<main className='max-w-screen-2xl mx-auto'>
+    <Slider></Slider>
+</main>
 </>
 )
 
