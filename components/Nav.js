@@ -1,9 +1,14 @@
 import React from "react";
-
+import {signIn,signOut,useSession} from 'next-auth/react'
+import Link from "next/link";
+import { useRouter } from "next/router";
 function Nav() {
+  const { data: session } = useSession()
+  const router = useRouter();
   return (
     <nav className="flex shadow-md bg-black text-white items-center justify-between">
       <div className="logo grid grid-cols-2 text-center p-1">
+        <div className="flex space-x-3 ml-3 cursor-pointer" onClick={()=>{router.push('/')}}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -21,6 +26,7 @@ function Nav() {
         <div>
           <p className="font-semibold">Ecommerce</p>
           <p className="font-semibold">App</p>
+        </div>
         </div>
       </div>
       <div className="hidden md:flex">
@@ -45,14 +51,17 @@ function Nav() {
         </svg>
       </div>
       <div className="flex space-x-10 mx-5 text-center items-center">
-        <div className='cursor-pointer font-semibold'>
-          <p>Hello currentuser.name</p>
-          <p>your profile</p>
+        <div className='cursor-pointer font-semibold' onClick={()=>{!session? signIn():signOut()}}>
+          {session? <div><p>Hello {session.user.name}</p>
+          <p>Nice to see you</p></div> : <p>SIGN IN</p>}
+
         </div>
         <div className='cursor-pointer font-semibold'>
-          <p>Your Orders</p>
-          <p>And returns</p>
+        {session? <div>          <p>Your Orders</p>
+          <p>And returns</p></div> : <p></p>}
+
         </div>
+        <Link href='/basket'>
         <div className="relative cursor-pointer font-semibold">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -71,6 +80,8 @@ function Nav() {
         <div className="absolute top-4 -right-3 bg-lightRed animate-pulse w-6 h-6  rounded-full text-center flex items-center justify-center">    <span >0</span></div>
 
         </div>
+        </Link>
+
 
       </div>
     </nav>
