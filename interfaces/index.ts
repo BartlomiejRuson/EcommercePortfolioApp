@@ -4,7 +4,9 @@
 //
 // import { User } from 'path/to/interfaces';
 
-export type User = {
-  id: number
-  name: string
+export interface Product {
+  title: string;
+  id: number;
+  description:string;
+  image:string;
 }
