@@ -16,6 +16,7 @@ function Productslist({ products }) {
             width={200}
             height={200}
             className="object-contain p-3 m-auto"
+            alt={title}
           ></Image>
           <h2 className="p-2 font-semibold ">{title}</h2>
           <h2 className="font-semibold ">{price}$</h2>

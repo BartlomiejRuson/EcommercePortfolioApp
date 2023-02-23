@@ -2,8 +2,10 @@ import { useSession,signIn } from "next-auth/react";
 import Image from "next/image";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import { loadStripe } from "@stripe/stripe-js";
 import Nav from "../components/Nav";
+const axios = require('axios').default;
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 import {
   removeFromBasket,
   selectItems,
@@ -14,6 +16,11 @@ function Basket() {
   const items = useSelector(selectItems);
   const totalPrice = useSelector(selectTotalPrice);
   const dispatch = useDispatch();
+  const createCheckoutSession = async () =>{
+    const stripe = await stripePromise;
+    
+    const checkOutSession = await axios.post('/api/create-payment-intent',{items,email:session.user.email})
+  }
   return (
     <div>
       <Nav></Nav>
@@ -57,7 +64,7 @@ function Basket() {
             <h1>{`(${items.length}) `}{ items.length>=2 ?'items: ':"item: "} {totalPrice} $</h1>
             <h1 className="border-b-2 pb-1">Delivery: Free</h1>
             <h1 className="font-bold text-xl">Total: {totalPrice} $</h1>
-            {session?            <button
+            {session?            <button onClick={()=>{createCheckoutSession()}}
             className="p-2 my-3 mx-3 font-semibold opacity-90 hover:opacity-100 transition-all text-white bg-darkRed rounded-md"
           >
             CHECK OUT
