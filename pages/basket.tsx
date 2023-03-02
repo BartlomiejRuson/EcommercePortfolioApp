@@ -12,14 +12,25 @@ import {
   selectTotalPrice,
 } from "../slices/basketSlice";
 function Basket() {
-  const { data: session } = useSession()
+  const  session  = useSession()
   const items = useSelector(selectItems);
   const totalPrice = useSelector(selectTotalPrice);
   const dispatch = useDispatch();
   const createCheckoutSession = async () =>{
     const stripe = await stripePromise;
-    
-    const checkOutSession = await axios.post('/api/create-payment-intent',{items,email:session.user.email})
+
+      const checkOutSession = await axios.post('/api/checkoutSession',{
+        items:items,
+        email:session.data.user.email
+      })
+
+      const redirect = await stripe.redirectToCheckout({
+        sessionId:checkOutSession.data.id
+      });
+      if(redirect.error){
+        alert(redirect.error.message)
+      }
+
   }
   return (
     <div>
