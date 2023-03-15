@@ -6,7 +6,7 @@ function Productslist({ products }) {
   const dispatch = useDispatch();
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 text-center">
-      {products.map(({ id, title, price, image, description }) => (
+      {products.map(({ id, title, price, image, description}) => (
         <div
           key={id}
           className="border flex justify-between flex-col m-3 rounded-sm bg-white"

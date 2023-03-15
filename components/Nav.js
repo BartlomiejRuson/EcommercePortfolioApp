@@ -10,15 +10,15 @@ function Nav() {
   const items = useSelector(selectItems);
   return (
     <nav className="flex shadow-md bg-black text-white items-center justify-between">
-      <div className="logo grid grid-cols-2 text-center p-1">
-        <div className="flex space-x-3 ml-3 cursor-pointer" onClick={()=>{router.push('/')}}>
+      <div className="logo grid lg:grid-cols-2 text-center p-2">
+        <div className="flex bg-white space-x-1 ml-3 cursor-pointer border border-white p-1 px-2 rounded-2xl" onClick={()=>{router.push('/')}}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-9 h-9 m-auto"
+          className="w-9 h-9 m-auto text-black"
         >
           <path
             strokeLinecap="round"
@@ -26,42 +26,21 @@ function Nav() {
             d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
           />
         </svg>
-        <div>
-          <p className="font-semibold">Ecommerce</p>
-          <p className="font-semibold">App</p>
+        <div className="hidden lg:block">
+          <p className="font-semibold text-black">E-COMMERCE</p>
+          <p className="font-semibold text-black">APP</p>
         </div>
         </div>
       </div>
-      <div className="hidden md:flex">
-        <input
-          type="text"
-          className="text-black focus:outline-none h-8 rounded-l-sm p-1"
-          placeholder="Search"
-        />
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-8 h-8 bg-lightRed p-1 rounded-r-sm cursor-pointer"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-          />
-        </svg>
-      </div>
+     
       <div className="flex space-x-10 mx-5 text-center items-center">
-        <div className='cursor-pointer font-semibold' onClick={()=>{!session? signIn():signOut()}}>
+        <div className=' font-semibold' onClick={()=>{!session? signIn():''}}>
           {session? <div><p>Hello {session.user.name}</p>
-          <p>Nice to see you</p></div> : <p>SIGN IN</p>}
+          <p>Nice to see you</p></div> : <p className="cursor-pointer">SIGN IN</p>}
 
         </div>
         <div className='cursor-pointer font-semibold'>
-        {session? <div>          <p>Your Orders</p>
-          <p>And returns</p></div> : <p></p>}
+        {session? <div onClick={()=>{signOut()}}>          <p>SIGN OUT</p></div> : <p></p>}
 
         </div>
         <Link href='/basket'>
