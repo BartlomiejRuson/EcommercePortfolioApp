@@ -36,7 +36,7 @@ function Nav() {
       <div className="flex space-x-10 mx-5 text-center items-center">
         <div className=' font-semibold' onClick={()=>{!session? signIn():''}}>
           {session? <div><p>Hello {session.user.name}</p>
-          <p>Nice to see you</p></div> : <p className="cursor-pointer">SIGN IN</p>}
+          <p className="hidden md:block">Nice to see you</p></div> : <p className="cursor-pointer">SIGN IN</p>}
 
         </div>
         <div className='cursor-pointer font-semibold'>

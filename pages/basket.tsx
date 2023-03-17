@@ -40,8 +40,8 @@ function Basket() {
           {items.length !== 0 ? "Your Basket. " : "Your basket is empty"}{" "}
           {items.length !== 0 ? `Total price is ${totalPrice} $` : ""}
         </h1>
-        <main className="grid grid-cols-6">
-          <div className="col-span-5 mr-5">
+        <main className="md:grid grid-cols-6">
+          <div className="md:col-span-5 md:mr-5">
           {items.map(({ id, title, price, image, description }) => (
             <div
               key={id}
@@ -70,7 +70,7 @@ function Basket() {
             </div>
           ))}
           </div>
-          {items.length>0?          <div className="flex flex-col space-y-4 text-lg">
+          {items.length>0?          <div className="flex border-t p-1 bg-white fixed md:static bottom-0 w-full flex-col space-y-4 text-lg">
             <h1>Order Summary</h1>
             <h1>{`(${items.length}) `}{ items.length>=2 ?'items: ':"item: "} {totalPrice} $</h1>
             <h1 className="border-b-2 pb-1">Delivery: Free</h1>

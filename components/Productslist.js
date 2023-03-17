@@ -32,7 +32,7 @@ function Productslist({ products }) {
               };
               dispatch(addToBasket(product))
             }}
-            className="p-2 my-3 mx-3 font-semibold opacity-90 hover:opacity-100 transition-all text-white bg-darkRed rounded-md"
+            className="p-2 my-3 mx-3 font-semibold opacity-90 hover:opacity-100 hover:scale-105 transition-all text-white bg-darkRed rounded-md"
           >
             ADD TO BASKET
           </button>
