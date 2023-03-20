@@ -4,6 +4,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
 import Nav from "../components/Nav";
+
 const axios = require('axios').default;
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 import {
@@ -32,8 +33,10 @@ function Basket() {
       }
 
   }
+  
   return (
     <div>
+    
       <Nav></Nav>
       <div className="max-w-screen-2xl mx-auto p-3 text-center">
         <h1 className="text-3xl mt-2 mb-5">

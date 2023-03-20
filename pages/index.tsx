@@ -2,7 +2,7 @@
 import Nav from '../components/Nav'
 import Slider from '../components/Slider'
 import Productslist from '../components/Productslist'
-import { useState } from 'react'
+import Head from 'next/head'
 
 
 
@@ -13,6 +13,9 @@ const IndexPage = ({products}) => {
 
 return(
 <>
+<Head>
+ <title>Eccomerce website</title>
+</Head>
 <Nav></Nav>
 <main className='max-w-screen-2xl mx-auto'>
     <Slider></Slider>
