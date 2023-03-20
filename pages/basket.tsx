@@ -75,12 +75,14 @@ function Basket() {
             <h1>{`(${items.length}) `}{ items.length>=2 ?'items: ':"item: "} {totalPrice} $</h1>
             <h1 className="border-b-2 pb-1">Delivery: Free</h1>
             <h1 className="font-bold text-xl">Total: {totalPrice} $</h1>
-            {session?            <button onClick={()=>{createCheckoutSession()}}
+            {session.data?            <button onClick={()=>{createCheckoutSession()}}
             className="p-2 my-3 mx-3 font-semibold opacity-90 hover:opacity-100 transition-all text-white bg-darkRed rounded-md"
           >
             CHECK OUT
           </button>:
-                      <button onClick={()=>{signIn()}}
+                      <button onClick={async()=>{
+                        signIn()
+                      }}
                       className="p-2 my-3 mx-3 font-semibold opacity-90 hover:opacity-100 transition-all text-white bg-darkRed rounded-md"
                     >
                      SIGN IN TO CHECK OUT
