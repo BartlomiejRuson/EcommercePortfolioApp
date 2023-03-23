@@ -1,8 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { Product } from '../interfaces'
-type ProductArray = Array<Product>
+import { Product } from '../types'
 
-const initialState  = {
+
+
+const initialState:{
+  items:Product[];
+  totalPrice:number;
+}  = {
   items:[],
   totalPrice:0
 }
