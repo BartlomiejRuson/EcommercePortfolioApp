@@ -31,7 +31,7 @@ function Electronics({ products }) {
             <Link href="/">Back to homepage</Link>
           </h3>
         </div>
-
+        <h1 className="mx-auto text-center text-4xl font-semibold py-3 ">Electronics</h1>
         <Productslist products={sortedItems}></Productslist>
       </main>
     </>
